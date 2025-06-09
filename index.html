@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>인터랙티브 포스터 전시회</title>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #111;
+            color: #eee;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 150px 20px;
+            text-align: center;
+        }
+
+        /* Intro Section */
+        .intro {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #111, #222);
+            color: #00ffcc;
+            text-align: center;
+            position: relative;
+        }
+
+        .intro h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .intro p {
+            font-size: 24px;
+            color: #ccc;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .enter-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            background-color: #00ffcc;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .enter-button:hover {
+            transform: scale(1.05);
+            background-color: #00e6b8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Poster Section */
+        .poster {
+            position: relative;
+        }
+
+        .poster img {
+            width: 80%;
+            max-width: 1000px;
+            opacity: 0;
+            transform: translateY(50px);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .poster img:hover {
+            transform: scale(1.02);
+        }
+
+        .poster-text {
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .poster-text h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .poster-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Horizontal Section */
+        .horizontal-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .horizontal-wrapper {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .horizontal-gallery {
+            display: flex;
+            height: 100%;
+            will-change: transform;
+        }
+
+        .horizontal-gallery img {
+            width: 80vw;
+            height: auto;
+            flex-shrink: 0;
+            margin-right: 40px;
+            object-fit: cover;
+        }
+
+        /* About Me Section */
+        .about {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Intro Section -->
+    <section class="section intro">
+        <h1>자동차 전시회에 오신걸 환영합니다</h1>
+        <p>스크롤 또는 아래 버튼을 눌러 관람하세요 ↓</p>
+        <a href="#poster-section" class="enter-button">전시회 입장하기</a>
+    </section>
+
+    <!-- Poster Section 1 -->
+    <section class="section poster" id="poster-section">
+        <img src="bmw-810x476.jpg" alt="Poster 1" />
+        <div class="poster-text">
+            <h2>BMW I8</h2>
+            <p>하이브리드 스포츠카 형태로 출시한 모델 전체적으로 아주 세련된 매력적인 디자인.  
+            특히, 고급스러움은 기본이고 유선형의 디자인으로 공기역학적 설계로 곡선미를 내뿜는 것을 확인할 수 있습니다.</p>
+        </div>
+    </section>
+
+    <!-- Poster Section 2 -->
+    <section class="section poster">
+        <img src="벤츠.jpg" alt="Poster 2" />
+        <div class="poster-text">
+            <h2>벤츠 AMG</h2>
+            <p>AMG CLE 53 카브리올레는 오픈카 특유의 감성을 극대화한 모델로, 최대 60km/h에서도 20초 안에 개폐 가능한 다층 구조 소프트탑을 통해 단열과 방음 효과를 높였습니다.</p>
+        </div>
+    </section>
+
+    <!-- Poster Section 3 (Horizontal Scroll Gallery) -->
+    <section class="section poster horizontal-section">
+        <div class="horizontal-wrapper">
+            <div class="horizontal-gallery">
+                <img src="아우디.jpg" alt="Poster 3-1" />
+                <img src="bmw-810x476.jpg" alt="Poster 3-2" />
+                <img src="벤츠.jpg" alt="Poster 3-3" />
+                <img src="다운로드.jpg" alt="Poster 3-4" />
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="section about">
+        <h2>About Me</h2>
+        <p>저는 시각디자인학과 학생으로, 본 전시에서는 인터랙티브 웹 기술을 활용하여 포스터 전시의 새로운 경험을 제안합니다.</p>
+    </section>
+
+    <!-- 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+
+    <!-- JS 내부 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            var controller = new ScrollMagic.Controller();
+
+            // Poster 이미지 FadeIn
+            document.querySelectorAll('.poster img').forEach((img) => {
+                new ScrollMagic.Scene({
+                    triggerElement: img,
+                    triggerHook: 0.9,
+                    reverse: false
+                })
+                .setTween(gsap.to(img, {duration: 1, opacity: 1, y: 0, ease: "power2.out"}))
+                .addTo(controller);
+            });
+
+            // Poster 텍스트 FadeIn
+            document.querySelectorAll('.poster-text').forEach((text) => {
+                new ScrollMagic.Scene({
+                    triggerElement: text,
+                    triggerHook: 0.9,
+                    reverse: false
+                })
+                .setTween(gsap.to(text, {duration: 1, opacity: 1, y: 0, ease: "power2.out"}))
+                .addTo(controller);
+            });
+            
+            // Horizontal Scroll
+            var horizontalSection = document.querySelector('.horizontal-section');
+            var horizontalGallery = document.querySelector('.horizontal-gallery');
+            var horizontalScrollLength = horizontalGallery.scrollWidth - window.innerWidth;
+
+            var horizontalTween = gsap.to(horizontalGallery, {
+                x: -horizontalScrollLength,
+                ease: "none"
+            });
+
+            new ScrollMagic.Scene({
+                triggerElement: horizontalSection,
+                triggerHook: 0,
+                duration: horizontalScrollLength
+            })
+            .setPin(horizontalSection)
+            .setTween(horizontalTween)
+            .addTo(controller);
+        });
+    </script>
+</body>
+</html>
