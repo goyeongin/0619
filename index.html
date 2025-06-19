@@ -189,20 +189,29 @@
     </section>
 
     <section class="section poster" id="poster-section">
-        <img src="bmw-810x476.jpg" alt="Poster 1" />
-        <div class="poster-text">
-            <h2>BMW I8</h2>
-            <p>하이브리드 스포츠카 형태로 출시한 모델. 유선형 디자인으로 공기역학적 설계를 갖춘 세련된 모델입니다.</p>
-        </div>
-    </section>
+  <img src="bmw-810x476.jpg" alt="Poster 1" style="filter: brightness(1.1) contrast(1.1); box-shadow: 0 0 40px rgba(0,255,204,0.3); transition: transform 0.5s ease, filter 0.5s ease;" />
+  <div class="poster-text" style="animation: fadeInUp 1s ease forwards;">
+      <h2 style="text-shadow: 0 0 10px rgba(0,255,204,0.6);">BMW I8</h2>
+      <p>하이브리드 스포츠카 형태로 출시한 모델 전체적으로 아주 세련된 매력적인 디자인.<br>
+      특히, 고급스러움은 기본이고 유선형의 디자인으로 공기역학적 설계로 곡선미를 내뿜는 것을 확인할 수 있습니다.</p>
+  </div>
+</section>
 
-    <section class="section poster">
-        <img src="벤츠.jpg" alt="Poster 2" />
-        <div class="poster-text">
-            <h2>벤츠 AMG</h2>
-            <p>오픈카 특유의 감성을 극대화한 모델. 소프트탑으로 단열과 방음 효과까지 갖춘 프리미엄 경험을 선사합니다.</p>
-        </div>
-    </section>
+<section class="section poster">
+  <img src="벤츠.jpg" alt="Poster 2" style="filter: grayscale(0.1) brightness(1.1); box-shadow: 0 0 30px rgba(255,255,255,0.2); transition: transform 0.5s ease, filter 0.5s ease;" />
+  <div class="poster-text" style="animation: fadeInUp 1s ease 0.3s forwards;">
+      <h2 style="text-shadow: 0 0 15px rgba(255,255,255,0.3); color: #00e6b8;">벤츠 AMG</h2>
+      <p>AMG CLE 53 카브리올레는 오픈카 특유의 감성을 극대화한 모델로, 최대 60km/h에서도 20초 안에 개폐 가능한 다층 구조 소프트탑을 통해 단열과 방음 효과를 높였습니다.</p>
+  </div>
+</section>
+
+<section class="section poster horizontal-section">
+  <div class="horizontal-gallery">
+      <img src="아우디.jpg" alt="Poster 3-1" style="box-shadow: 0 0 20px rgba(0,255,255,0.2); transition: transform 0.4s ease;"/>
+      <img src="bmw-810x476.jpg" alt="Poster 3-2" style="box-shadow: 0 0 20px rgba(255,0,255,0.2); transition: transform 0.4s ease;"/>
+      <img src="벤츠.jpg" alt="Poster 3-3" style="box-shadow: 0 0 20px rgba(255,255,0,0.2); transition: transform 0.4s ease;"/>
+      <img src="다운로드.jpg" alt="Poster 3-4" style="box-shadow: 0 0 20px rgba(255,128,0,0.2); transition: transform 0.4s ease;"/>
+  </div>
 
     <section class="section poster horizontal-section">
         <div class="horizontal-gallery">
@@ -211,13 +220,10 @@
             <img src="벤츠.jpg" alt="Poster 3-3" />
             <img src="다운로드.jpg" alt="Poster 3-4" />
         </div>
-    </section>
-
-    <section class="section about">
+        <section class="section about">
         <h2>About Me</h2>
         <p>저는 시각디자인학과 학생으로, 본 전시에서는 인터랙티브 웹 기술을 활용하여 포스터 전시의 새로운 경험을 제안합니다.</p>
     </section>
-
     <audio id="clickSound" src="click.mp3" preload="auto"></audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -226,6 +232,63 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
     <script>
+        // 별빛 효과 추가
+    const starsContainer = document.createElement('div');
+    starsContainer.classList.add('stars');
+    starsContainer.style.cssText = 'position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; pointer-events: none;';
+    document.body.appendChild(starsContainer);
+
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.position = 'absolute';
+      star.style.width = '2px';
+      star.style.height = '2px';
+      star.style.borderRadius = '50%';
+      star.style.background = 'white';
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animation = 'twinkle 2s infinite';
+      starsContainer.appendChild(star);
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // 클릭 이펙트
+    document.addEventListener('click', e => {
+      const clickEffect = document.createElement('div');
+      clickEffect.style.cssText = `
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.4);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        animation: clickBurst 0.5s ease-out;
+        z-index: 9999;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+      `;
+      document.body.appendChild(clickEffect);
+      setTimeout(() => clickEffect.remove(), 500);
+    });
+
+    const clickStyle = document.createElement('style');
+    clickStyle.textContent = `
+      @keyframes clickBurst {
+        0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(clickStyle);
         document.addEventListener('DOMContentLoaded', function() {
             const controller = new ScrollMagic.Controller();
 
